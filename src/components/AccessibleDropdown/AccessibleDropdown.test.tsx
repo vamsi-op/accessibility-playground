@@ -165,7 +165,6 @@ describe("AccessibleDropdown", () => {
       // Open second dropdown
       await user.click(buttons[1])
       
-      // Should only have one listbox open (or handle multiple correctly)
       const listboxes = screen.queryAllByRole('listbox')
       expect(listboxes.length).toBeGreaterThan(0)
     })
@@ -556,6 +555,110 @@ describe("AccessibleDropdown", () => {
       options.forEach((option, index) => {
         expect(option).toHaveTextContent(mockOptions[index].label)
       })
+    })
+  })
+
+  describe('Performance', () => {
+    it('renders large option list efficiently', async () => {
+      const manyOptions = Array.from({ length: 1000 }, (_, i) => ({
+        id: `option-${i}`,
+        label: `Option ${i}`
+      }))
+      
+      const start = performance.now()
+      const { getByRole } = render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={manyOptions}
+        />
+      )
+      const end = performance.now()
+      
+      const renderTime = end - start
+      expect(renderTime).toBeLessThan(1000) 
+      
+      const button = getByRole('button')
+      expect(button).toBeInTheDocument()
+    })
+
+   it('opens large dropdown without performance issues', async () => {
+      const manyOptions = Array.from({ length: 1000 }, (_, i) => ({
+        id: `option-${i}`,
+        label: `Option ${i}`
+      }))
+      
+      const user = userEvent.setup()
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={manyOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      
+      const start = performance.now()
+      await user.click(button)
+      const end = performance.now()
+      
+      const openTime = end - start
+      expect(openTime).toBeLessThan(2000) 
+      
+      expect(screen.getByRole('listbox')).toBeInTheDocument()
+    })
+
+    it('handles rapid keyboard navigation in large list', async () => {
+      const manyOptions = Array.from({ length: 100 }, (_, i) => ({
+        id: `option-${i}`,
+        label: `Option ${i}`
+      }))
+      
+      const user = userEvent.setup()
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={manyOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      await user.click(button)
+      
+      const start = performance.now()
+      
+      for (let i = 0; i < 30; i++) {
+        await user.keyboard('{ArrowDown}')
+      }
+      
+      const end = performance.now()
+      const navigationTime = end - start
+      
+      expect(navigationTime).toBeLessThan(2000)
+      expect(screen.getByRole('listbox')).toBeInTheDocument()
+    })
+
+    it('handles scroll performance with many options', async () => {
+      const manyOptions = Array.from({ length: 500 }, (_, i) => ({
+        id: `option-${i}`,
+        label: `Option ${i}`
+      }))
+      
+      const user = userEvent.setup()
+      const { container } = render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={manyOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      await user.click(button)
+      
+      const listbox = screen.getByRole('listbox')
+      
+      fireEvent.scroll(listbox, { target: { scrollY: 100 } })
+      
+      expect(listbox).toBeInTheDocument()
     })
   })
 
