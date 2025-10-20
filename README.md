@@ -10,6 +10,7 @@ An interactive playground for learning and building accessible React components.
 ## 🌟 Features
 
 - **Interactive Components**: Pre-built accessible components with live examples
+- **Accessible Theme Toggle**: Light/Dark/System modes with persistence
 - **Storybook Integration**: Isolated component development and documentation
 - **Automated A11y Testing**: Built-in axe-core testing for WCAG compliance
 - **Keyboard Navigation**: Full keyboard support demonstrations
@@ -41,6 +42,32 @@ npm run storybook
 ```
 
 ## 📚 Available Components
+
+### ThemeToggle
+
+An accessible theme switcher that supports light, dark, and system preference modes.
+
+**Features:**
+- ✅ Toggles between Light (☀️), Dark (🌙), and System (💻) modes
+- ✅ Detects system preference with `prefers-color-scheme`
+- ✅ Persists the user's choice to `localStorage`
+- ✅ Announces state changes to screen readers
+- ✅ Smooth CSS transitions between themes
+
+**Usage:**
+
+```tsx
+import { ThemeToggle } from './components/ThemeToggle/ThemeToggle'
+
+function App() {
+  return (
+    <>
+      <ThemeToggle />
+      {/* ... your app content ... */}
+    </>
+  )
+}
+```
 
 ### AccessibleDropdown
 
@@ -109,11 +136,15 @@ Browse to `http://localhost:6006` to see:
 ```
 src/
 ├── components/
-│   └── AccessibleDropdown/
-│       ├── AccessibleDropdown.tsx      # Component implementation
-│       ├── AccessibleDropdown.css      # Component styles
-│       ├── AccessibleDropdown.test.tsx # Component tests
-│       └── AccessibleDropdown.stories.tsx # Storybook stories
+│   ├── AccessibleDropdown/
+│   │   ├── AccessibleDropdown.tsx
+│   │   ├── AccessibleDropdown.css
+│   │   ├── AccessibleDropdown.test.tsx
+│   │   └── AccessibleDropdown.stories.tsx
+│   └── ThemeToggle/
+│       ├── ThemeToggle.tsx
+│       ├── ThemeToggle.css
+│       └── ThemeToggle.test.tsx
 ├── test/
 │   └── setup.ts                        # Test configuration
 ├── App.tsx                             # Main application
