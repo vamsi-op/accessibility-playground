@@ -144,7 +144,8 @@ src/
 │   └── ThemeToggle/
 │       ├── ThemeToggle.tsx
 │       ├── ThemeToggle.css
-│       └── ThemeToggle.test.tsx
+│       ├── ThemeToggle.test.tsx
+│       └── ThemeToggle.stories.tsx
 ├── test/
 │   └── setup.ts                        # Test configuration
 ├── App.tsx                             # Main application
