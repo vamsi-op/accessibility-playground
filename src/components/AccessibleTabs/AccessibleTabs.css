@@ -1,0 +1,30 @@
+[role="tablist"] {
+  display: flex;
+  border-bottom: 1px solid #ccc;
+}
+
+[role="tab"] {
+  padding: 10px 15px;
+  border: 1px solid transparent;
+  border-bottom: 0;
+  cursor: pointer;
+  background-color: #f0f0f0;
+  margin-right: 5px;
+}
+
+[role="tab"][aria-selected="true"] {
+  border-color: #ccc;
+  border-bottom: 1px solid white;
+  background-color: white;
+}
+
+[role="tab"]:focus {
+  outline: 2px solid blue;
+  outline-offset: -2px;
+}
+
+[role="tabpanel"] {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-top: 0;
+}
