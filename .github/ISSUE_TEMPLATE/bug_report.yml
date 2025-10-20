@@ -1,0 +1,72 @@
+name: Bug Report
+description: Report a bug or accessibility issue
+title: "[BUG]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please fill out the sections below.
+  
+  - type: textarea
+    id: description
+    attributes:
+      label: Bug Description
+      description: A clear description of the bug
+      placeholder: What happened?
+    validations:
+      required: true
+  
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+  
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What you expected to happen
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which component has the issue?
+      options:
+        - AccessibleDropdown
+        - Other (specify in description)
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: accessibility
+    attributes:
+      label: Accessibility Issue?
+      description: Is this an accessibility-related bug?
+      options:
+        - "Yes"
+        - "No"
+    validations:
+      required: true
+  
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Browser, OS, assistive technology used
+      placeholder: |
+        - Browser: Chrome 120
+        - OS: Windows 11
+        - Screen Reader: NVDA (if applicable)
+    validations:
+      required: false

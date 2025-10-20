@@ -1,0 +1,70 @@
+name: Good First Issue
+description: Create a good first issue for new contributors
+title: "[GOOD FIRST ISSUE]: "
+labels: ["good-first-issue", "hacktoberfest"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Create a task that's perfect for first-time contributors!
+  
+  - type: textarea
+    id: description
+    attributes:
+      label: Task Description
+      description: Describe the task clearly
+      placeholder: What needs to be done?
+    validations:
+      required: true
+  
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Background information and links to relevant files
+      placeholder: |
+        Files involved:
+        - src/components/...
+        
+        Related docs:
+        - ...
+    validations:
+      required: true
+  
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance Criteria
+      description: How do we know this is done?
+      placeholder: |
+        - [ ] Tests pass
+        - [ ] Component is accessible
+        - [ ] Storybook story added
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Difficulty Level
+      options:
+        - Easy (1-2 hours)
+        - Medium (3-5 hours)
+        - Challenging (5+ hours)
+    validations:
+      required: true
+  
+  - type: dropdown
+    id: skills
+    attributes:
+      label: Skills Required
+      multiple: true
+      options:
+        - React
+        - TypeScript
+        - CSS
+        - Accessibility
+        - Testing
+        - Storybook
+    validations:
+      required: true

@@ -1,0 +1,62 @@
+name: Feature Request
+description: Suggest a new component or feature
+title: "[FEATURE]: "
+labels: ["enhancement", "needs-discussion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature! Please describe your idea below.
+  
+  - type: dropdown
+    id: type
+    attributes:
+      label: Feature Type
+      description: What type of feature is this?
+      options:
+        - New Component
+        - Component Enhancement
+        - Documentation
+        - Testing
+        - Other
+    validations:
+      required: true
+  
+  - type: textarea
+    id: description
+    attributes:
+      label: Feature Description
+      description: Describe the feature you'd like to see
+      placeholder: What should this feature do?
+    validations:
+      required: true
+  
+  - type: textarea
+    id: use-case
+    attributes:
+      label: Use Case
+      description: Why is this feature useful?
+      placeholder: Describe a scenario where this would be helpful
+    validations:
+      required: true
+  
+  - type: textarea
+    id: accessibility
+    attributes:
+      label: Accessibility Considerations
+      description: What accessibility requirements should be considered?
+      placeholder: |
+        - Keyboard navigation
+        - Screen reader support
+        - WCAG compliance
+    validations:
+      required: false
+  
+  - type: textarea
+    id: implementation
+    attributes:
+      label: Implementation Ideas
+      description: Any ideas on how to implement this?
+      placeholder: Optional - Share your thoughts on implementation
+    validations:
+      required: false

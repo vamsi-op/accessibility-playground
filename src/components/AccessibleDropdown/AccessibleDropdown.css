@@ -1,0 +1,133 @@
+.accessible-dropdown {
+  position: relative;
+  display: inline-block;
+  min-width: 250px;
+}
+
+.dropdown-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background-color: #1a1a1a;
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dropdown-button:hover {
+  border-color: #535bf2;
+  background-color: #2a2a2a;
+}
+
+.dropdown-button:focus,
+.dropdown-button:focus-visible {
+  outline: 3px solid #646cff;
+  outline-offset: 2px;
+}
+
+.dropdown-label {
+  font-weight: 600;
+}
+
+.dropdown-value {
+  flex: 1;
+  text-align: left;
+  opacity: 0.9;
+}
+
+.dropdown-arrow {
+  font-size: 0.8rem;
+  opacity: 0.7;
+  transition: transform 0.2s ease;
+}
+
+.dropdown-list {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  right: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0.5rem 0;
+  background-color: #1a1a1a;
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  max-height: 250px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-option {
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dropdown-option:hover,
+.dropdown-option.active {
+  background-color: #646cff;
+  color: white;
+}
+
+.dropdown-option.selected {
+  font-weight: 600;
+}
+
+.check-mark {
+  color: #4ade80;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+  .dropdown-button {
+    background-color: #f9f9f9;
+    color: #213547;
+    border-color: #646cff;
+  }
+
+  .dropdown-button:hover {
+    background-color: #ececec;
+  }
+
+  .dropdown-list {
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  .dropdown-option:hover,
+  .dropdown-option.active {
+    background-color: #646cff;
+    color: white;
+  }
+}
+
+/* Scrollbar styling */
+.dropdown-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.dropdown-list::-webkit-scrollbar-track {
+  background: rgba(100, 108, 255, 0.1);
+  border-radius: 4px;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb {
+  background: #646cff;
+  border-radius: 4px;
+}
+
+.dropdown-list::-webkit-scrollbar-thumb:hover {
+  background: #535bf2;
+}
