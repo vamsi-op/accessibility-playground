@@ -4,13 +4,22 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  --color-background: #ffffff;
+  --color-text: #213547;
+  --color-background-soft: #f9f9f9;
+  --color-border: #e0e0e0;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+[data-theme='dark'] {
+  --color-background: #242424;
+  --color-text: rgba(255, 255, 255, 0.87);
+  --color-background-soft: #1a1a1a;
+  --color-border: #3a3a3a;
 }
 
 a {
@@ -28,6 +37,9 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-background);
+  color: var(--color-text);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
