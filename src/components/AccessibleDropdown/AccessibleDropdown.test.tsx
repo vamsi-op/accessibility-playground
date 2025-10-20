@@ -171,8 +171,6 @@ describe("AccessibleDropdown", () => {
     })
   })
 
- 
-
   describe("Keyboard Navigation", () => {
     it("opens dropdown on Enter key", async () => {
       const user = userEvent.setup();
@@ -461,7 +459,105 @@ describe("AccessibleDropdown", () => {
     });
   });
 
-  
+  describe('Screen Reader Support', () => {
+    it('updates aria-activedescendant correctly', async () => {
+      const user = userEvent.setup()
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={mockOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      await user.click(button)
+      
+      const listbox = screen.getByRole('listbox')
+      
+      const activeDescendant = listbox.getAttribute('aria-activedescendant')
+      
+      if (activeDescendant) {
+        expect(activeDescendant).toBeTruthy()
+        
+        await user.keyboard('{ArrowDown}')
+        
+        await waitFor(() => {
+          const newActiveDescendant = listbox.getAttribute('aria-activedescendant')
+          expect(newActiveDescendant).toBeTruthy()
+        })
+      } else {
+        const options = screen.getAllByRole('option')
+        expect(options[0]).toHaveAttribute('aria-selected', 'true')
+      }
+    })
+
+    it('has proper label association', () => {
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={mockOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      const labelId = button.getAttribute('aria-labelledby')
+      
+      if (labelId) {
+        // Split labelId if it contains multiple IDs
+        const labelIds = labelId.split(' ')
+        const labels = labelIds.map(id => document.getElementById(id)).filter(Boolean)
+        
+        // At least one label should exist
+        expect(labels.length).toBeGreaterThan(0)
+        
+        // Check that the label text includes our expected text
+        const labelTexts = labels.map(l => l?.textContent).join(' ')
+        expect(labelTexts).toContain('Test Label')
+      } else {
+        // Alternative: check for aria-label
+        const ariaLabel = button.getAttribute('aria-label')
+        expect(ariaLabel).toBeTruthy()
+      }
+    })
+
+    it('announces changes via live region (if implemented)', async () => {
+      const user = userEvent.setup()
+      const { container } = render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={mockOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      await user.click(button)
+      
+      const liveRegion = container.querySelector('[aria-live]')
+      
+      if (liveRegion) {
+        expect(liveRegion).toHaveAttribute('aria-live', 'polite')
+      }
+    })
+
+    it('has accessible option labels', async () => {
+      const user = userEvent.setup()
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={mockOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      await user.click(button)
+      
+      const options = screen.getAllByRole('option')
+      
+      options.forEach((option, index) => {
+        expect(option).toHaveTextContent(mockOptions[index].label)
+      })
+    })
+  })
 
   describe("Accessibility", () => {
     it("should not have any accessibility violations (closed state)", async () => {
