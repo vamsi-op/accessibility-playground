@@ -75,6 +75,48 @@ function App() {
 }
 ```
 
+### AccessibleModal
+
+A fully accessible modal dialog component with focus trap and keyboard controls.
+
+**Features:**
+- ✅ Full keyboard navigation (Escape to close)
+- ✅ ARIA attributes for screen readers
+- ✅ Focus trap to contain focus within modal
+- ✅ Returns focus to trigger element when closed
+- ✅ Prevents body scroll when open
+- ✅ Click outside to close
+
+**Usage:**
+
+```tsx
+import { useState } from 'react'
+import AccessibleModal from './components/AccessibleModal'
+
+function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+  
+  return (
+    <div>
+      <button onClick={() => setIsModalOpen(true)}>
+        Open Modal
+      </button>
+      
+      <AccessibleModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="Example Modal"
+      >
+        <p>This is the modal content.</p>
+        <button onClick={() => setIsModalOpen(false)}>
+          Close
+        </button>
+      </AccessibleModal>
+    </div>
+  )
+}
+```
+
 ## 🧪 Testing
 
 Run all tests with accessibility checks:
@@ -138,7 +180,7 @@ Looking for your first contribution? Check out issues labeled `good-first-issue`
 
 Want to add a new component? Here are some ideas:
 
-- [ ] AccessibleModal (dialog with focus trap)
+- [x] AccessibleModal (dialog with focus trap)
 - [ ] AccessibleTabs (keyboard navigation)
 - [ ] AccessibleButton (with loading states)
 - [ ] AccessibleForm (with error handling)

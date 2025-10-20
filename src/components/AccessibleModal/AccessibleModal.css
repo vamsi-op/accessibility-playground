@@ -1,0 +1,113 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+  color: #333;
+}
+
+.modal-close-button:hover,
+.modal-close-button:focus {
+  background-color: #f0f0f0;
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
+
+.modal-body {
+  padding: 1rem;
+  overflow: auto;
+  flex: 1;
+  color: #333;
+}
+
+/* Focus styles for accessibility */
+.modal-close-button:focus {
+  outline: 2px solid #005fcc;
+  outline-offset: 2px;
+}
+
+/* Animation */
+.modal-backdrop {
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.modal-backdrop:not(.modal-exiting) {
+  opacity: 1;
+}
+
+.modal-content {
+  transform: scale(0.9);
+  transition: transform 0.2s ease;
+}
+
+.modal-backdrop:not(.modal-exiting) .modal-content {
+  transform: scale(1);
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .modal-close-button:hover,
+  .modal-close-button:focus {
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop,
+  .modal-content {
+    transition: none;
+  }
+}
