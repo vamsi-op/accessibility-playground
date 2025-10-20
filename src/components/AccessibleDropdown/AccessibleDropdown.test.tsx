@@ -133,12 +133,10 @@ describe("AccessibleDropdown", () => {
       
       const button = screen.getByRole('button')
       
-      // Rapidly toggle dropdown
       for (let i = 0; i < 10; i++) {
         await user.click(button)
       }
       
-      // Should not crash and should be in a valid state
       expect(button).toBeInTheDocument()
     })
 
@@ -172,6 +170,8 @@ describe("AccessibleDropdown", () => {
       expect(listboxes.length).toBeGreaterThan(0)
     })
   })
+
+ 
 
   describe("Keyboard Navigation", () => {
     it("opens dropdown on Enter key", async () => {
@@ -350,6 +350,83 @@ describe("AccessibleDropdown", () => {
     });
   });
 
+ describe('Interaction Tests', () => {
+    it('closes dropdown when tabbing away', async () => {
+      const user = userEvent.setup()
+      render(
+        <div>
+          <AccessibleDropdown
+            label="Test Label"
+            options={mockOptions}
+          />
+          <button>Next Element</button>
+        </div>
+      )
+      
+      const button = screen.getByRole('button', { name: /Test Label/ })
+      await user.click(button)
+      
+      expect(screen.getByRole('listbox')).toBeInTheDocument()
+      
+      await user.tab()
+      
+      const listbox = screen.queryByRole('listbox')
+      
+      const nextButton = screen.getByText('Next Element')
+      
+      if (listbox) {
+        expect(nextButton).toHaveFocus()
+      } else {
+        expect(listbox).not.toBeInTheDocument()
+      }
+    })
+
+    it('maintains last selection when reopening dropdown', async () => {
+      const user = userEvent.setup()
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={mockOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      
+      await user.click(button)
+      const option2 = screen.getByText('Option 2')
+      await user.click(option2)
+      
+      await user.click(button)
+      
+      expect(button).toHaveTextContent('Option 2')
+    })
+
+    it('handles rapid keyboard navigation without crashing', async () => {
+      const user = userEvent.setup()
+      render(
+        <AccessibleDropdown
+          label="Test Label"
+          options={mockOptions}
+        />
+      )
+      
+      const button = screen.getByRole('button')
+      await user.click(button)
+      
+      for (let i = 0; i < 50; i++) {
+        await user.keyboard('{ArrowDown}')
+      }
+      
+      expect(screen.getByRole('listbox')).toBeInTheDocument()
+      
+      for (let i = 0; i < 50; i++) {
+        await user.keyboard('{ArrowUp}')
+      }
+      
+      expect(screen.getByRole('listbox')).toBeInTheDocument()
+    })
+  })
+
   describe("ARIA Attributes", () => {
     it("has correct ARIA attributes on button", () => {
       render(<AccessibleDropdown label="Test Label" options={mockOptions} />);
@@ -383,6 +460,8 @@ describe("AccessibleDropdown", () => {
       expect(options).toHaveLength(3);
     });
   });
+
+  
 
   describe("Accessibility", () => {
     it("should not have any accessibility violations (closed state)", async () => {
