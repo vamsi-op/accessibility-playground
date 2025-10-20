@@ -43,32 +43,6 @@ npm run storybook
 
 ## 📚 Available Components
 
-### ThemeToggle
-
-An accessible theme switcher that supports light, dark, and system preference modes.
-
-**Features:**
-- ✅ Toggles between Light (☀️), Dark (🌙), and System (💻) modes
-- ✅ Detects system preference with `prefers-color-scheme`
-- ✅ Persists the user's choice to `localStorage`
-- ✅ Announces state changes to screen readers
-- ✅ Smooth CSS transitions between themes
-
-**Usage:**
-
-```tsx
-import { ThemeToggle } from './components/ThemeToggle/ThemeToggle'
-
-function App() {
-  return (
-    <>
-      <ThemeToggle />
-      {/* ... your app content ... */}
-    </>
-  )
-}
-```
-
 ### AccessibleDropdown
 
 A fully accessible dropdown component with keyboard navigation.
@@ -98,6 +72,32 @@ function App() {
       options={options}
       onSelect={(option) => console.log(option)}
     />
+  )
+}
+```
+
+### ThemeToggle
+
+An accessible theme switcher that supports light, dark, and system preference modes.
+
+**Features:**
+- ✅ Toggles between Light (☀️), Dark (🌙), and System (💻) modes
+- ✅ Detects system preference with `prefers-color-scheme`
+- ✅ Persists the user's choice to `localStorage`
+- ✅ Announces state changes to screen readers
+- ✅ Smooth CSS transitions between themes
+
+**Usage:**
+
+```tsx
+import { ThemeToggle } from './components/ThemeToggle/ThemeToggle'
+
+function App() {
+  return (
+    <>
+      <ThemeToggle />
+      {/* ... your app content ... */}
+    </>
   )
 }
 ```
