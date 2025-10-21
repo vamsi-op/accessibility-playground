@@ -4,6 +4,7 @@ import AccessibleDropdown from './components/AccessibleDropdown/AccessibleDropdo
 import AccessibleModal from './components/AccessibleModal/AccessibleModal'
 import AccessibleButton from './components/AccessibleButton/AccessibleButton'
 import { AccessibleTabs } from './components/AccessibleTabs/AccessibleTabs'
+import { AccessibleTooltip } from './components/AccessibleTooltip/AccessibleTooltip'
 import { useState } from 'react'
 
 function App() {
@@ -128,12 +129,52 @@ function App() {
             <AccessibleTabs tabs={tabsData} defaultActiveId="tab1" />
           </section>
 
+          <section>
+            <h2>Accessible Tooltip Example</h2>
+            <p>Hover over or focus on the buttons to see tooltips</p>
+            
+            <div className="tooltip-demo">
+              <AccessibleTooltip content="This is a tooltip on the top">
+                <AccessibleButton>Top Tooltip</AccessibleButton>
+              </AccessibleTooltip>
+              
+              <AccessibleTooltip content="This tooltip appears on the bottom" position="bottom">
+                <AccessibleButton>Bottom Tooltip</AccessibleButton>
+              </AccessibleTooltip>
+              
+              <AccessibleTooltip content="This tooltip appears on the left" position="left">
+                <AccessibleButton>Left Tooltip</AccessibleButton>
+              </AccessibleTooltip>
+              
+              <AccessibleTooltip content="This tooltip appears on the right" position="right">
+                <AccessibleButton>Right Tooltip</AccessibleButton>
+              </AccessibleTooltip>
+              
+              <AccessibleTooltip 
+                content={
+                  <div>
+                    <p><strong>Rich Content Tooltip</strong></p>
+                    <p>This tooltip contains HTML content:</p>
+                    <ul>
+                      <li>Bold text</li>
+                      <li>Lists</li>
+                      <li>Multiple paragraphs</li>
+                    </ul>
+                  </div>
+                }
+              >
+                <AccessibleButton>Rich Content</AccessibleButton>
+              </AccessibleTooltip>
+            </div>
+          </section>
+
           <section className="info">
             <h3>Features Demonstrated:</h3>
             <ul>
               <li>✓ Accessible Button (variants, loading, disabled states)</li>
               <li>✓ Accessible Dropdown (keyboard navigation & ARIA)</li>
               <li>✓ Accessible Modal (focus trap & announcements)</li>
+              <li>✓ Accessible Tooltip (hover/focus, positioning, rich content)</li>
               <li>✓ Theme Toggle (system preference detection)</li>
               <li>✓ WCAG 2.1 AA compliance</li>
               <li>✓ Keyboard navigation (Tab, Arrows, Enter, Escape, Home, End)</li>
