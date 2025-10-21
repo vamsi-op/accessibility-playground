@@ -102,6 +102,60 @@ function App() {
 }
 ```
 
+### AccessibleButton
+
+A fully accessible button component with multiple variants, loading states, and icon support.
+
+**Features:**
+- ✅ Multiple variants (primary, secondary, danger)
+- ✅ Size options (small, medium, large)
+- ✅ Loading state with spinner and ARIA announcements
+- ✅ Disabled state with proper ARIA attributes
+- ✅ Icon support with flexible positioning (left/right)
+- ✅ Full keyboard navigation (Tab, Enter, Space)
+- ✅ Screen reader friendly with live regions
+- ✅ WCAG 2.1 AA compliant colors
+
+**Usage:**
+
+```tsx
+import AccessibleButton from './components/AccessibleButton/AccessibleButton'
+
+function App() {
+  return (
+    <>
+      {/* Basic button */}
+      <AccessibleButton onClick={() => console.log('Clicked!')}>
+        Click Me
+      </AccessibleButton>
+
+      {/* With variant and size */}
+      <AccessibleButton variant="danger" size="small">
+        Delete
+      </AccessibleButton>
+
+      {/* With loading state */}
+      <AccessibleButton isLoading variant="primary">
+        Saving...
+      </AccessibleButton>
+
+      {/* With icon */}
+      <AccessibleButton 
+        icon={<DownloadIcon />} 
+        iconPosition="left"
+      >
+        Download
+      </AccessibleButton>
+
+      {/* Disabled */}
+      <AccessibleButton disabled>
+        Unavailable
+      </AccessibleButton>
+    </>
+  )
+}
+```
+
 ### AccessibleModal
 
 An accessible modal dialog with focus trap and proper ARIA attributes.
@@ -215,6 +269,12 @@ Browse to `http://localhost:6006` to see:
 ```
 src/
 ├── components/
+│   ├── AccessibleButton/
+│   │   ├── AccessibleButton.tsx
+│   │   ├── AccessibleButton.css
+│   │   ├── AccessibleButton.test.tsx
+│   │   ├── AccessibleButton.stories.tsx
+│   │   └── AccessibleButton.stories.css
 │   ├── AccessibleDropdown/
 │   │   ├── AccessibleDropdown.tsx
 │   │   ├── AccessibleDropdown.css
@@ -259,9 +319,9 @@ Looking for your first contribution? Check out issues labeled `good-first-issue`
 
 Want to add a new component? Here are some ideas:
 
+- [x] AccessibleButton (with loading states) ✅
 - [x] AccessibleModal (dialog with focus trap) ✅
 - [x] AccessibleTabs (keyboard navigation) ✅
-- [ ] AccessibleButton (with loading states)
 - [ ] AccessibleForm (with error handling)
 - [ ] AccessibleTooltip (hover & focus)
 - [ ] AccessibleAccordion (expand/collapse)
