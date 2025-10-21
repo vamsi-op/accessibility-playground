@@ -141,6 +141,46 @@ function App() {
 }
 ```
 
+### AccessibleTabs
+
+An accessible tabs component with full keyboard navigation and ARIA support.
+
+**Features:**
+- ✅ Full keyboard navigation (Arrow keys, Home, End)
+- ✅ Mouse click support
+- ✅ ARIA attributes (role="tablist", role="tab", role="tabpanel")
+- ✅ Focus management and visual indicators
+- ✅ Screen reader support with aria-selected
+- ✅ Semantic HTML structure
+
+**Usage:**
+
+```tsx
+import { AccessibleTabs } from './components/AccessibleTabs/AccessibleTabs'
+
+const tabs = [
+  {
+    id: 'tab1',
+    label: 'Overview',
+    content: <div>Overview content</div>
+  },
+  {
+    id: 'tab2',
+    label: 'Features',
+    content: <div>Features content</div>
+  },
+  {
+    id: 'tab3',
+    label: 'Settings',
+    content: <div>Settings content</div>
+  }
+]
+
+function App() {
+  return <AccessibleTabs tabs={tabs} />
+}
+```
+
 ## 🧪 Testing
 
 Run all tests with accessibility checks:
@@ -185,6 +225,11 @@ src/
 │   │   ├── AccessibleModal.css
 │   │   ├── AccessibleModal.test.tsx
 │   │   └── AccessibleModal.stories.tsx
+│   ├── AccessibleTabs/
+│   │   ├── AccessibleTabs.tsx
+│   │   ├── AccessibleTabs.css
+│   │   ├── AccessibleTabs.test.tsx
+│   │   └── AccessibleTabs.stories.tsx
 │   └── ThemeToggle/
 │       ├── ThemeToggle.tsx
 │       ├── ThemeToggle.css
@@ -215,7 +260,7 @@ Looking for your first contribution? Check out issues labeled `good-first-issue`
 Want to add a new component? Here are some ideas:
 
 - [x] AccessibleModal (dialog with focus trap) ✅
-- [ ] AccessibleTabs (keyboard navigation)
+- [x] AccessibleTabs (keyboard navigation) ✅
 - [ ] AccessibleButton (with loading states)
 - [ ] AccessibleForm (with error handling)
 - [ ] AccessibleTooltip (hover & focus)
