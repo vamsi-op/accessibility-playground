@@ -1,5 +1,6 @@
 import './App.css'
 import AccessibleDropdown from './components/AccessibleDropdown/AccessibleDropdown'
+import { AccessibleTabs } from './components/AccessibleDropdown/AccessibleTabs'
 
 function App() {
   const fruitOptions = [
@@ -26,6 +27,18 @@ function App() {
             label="Choose a fruit"
             options={fruitOptions}
             onSelect={(option) => console.log('Selected:', option)}
+          />
+        </section>
+        <section>
+          <h2>Accessible Tabs Example</h2>
+          <p>Try using keyboard navigation: Tab, Arrow keys, Home, End</p>
+          <AccessibleTabs
+            tabs={[
+              { id: 'tab1', label: 'Tab 1', content: <p>Content for Tab 1</p> },
+              { id: 'tab2', label: 'Tab 2', content: <p>Content for Tab 2</p> },
+              { id: 'tab3', label: 'Tab 3', content: <p>Content for Tab 3</p> },
+            ]}
+            defaultActiveId="tab1"
           />
         </section>
 
