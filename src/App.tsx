@@ -3,6 +3,7 @@ import { ThemeToggle } from './components/ThemeToggle/ThemeToggle'
 import AccessibleDropdown from './components/AccessibleDropdown/AccessibleDropdown'
 import AccessibleModal from './components/AccessibleModal/AccessibleModal'
 import AccessibleButton from './components/AccessibleButton/AccessibleButton'
+import { AccessibleTabs } from './components/AccessibleTabs/AccessibleTabs'
 import { useState } from 'react'
 
 function App() {
@@ -15,6 +16,12 @@ function App() {
   ]
 
   const [isModalOpen, setIsModalOpen] = useState(false)
+
+  const tabsData = [
+    { id: 'tab1', label: 'Overview', content: <div><p>Welcome to the Accessibility Playground! This project demonstrates various accessible React components.</p></div> },
+    { id: 'tab2', label: 'Features', content: <div><ul><li>Keyboard Navigation</li><li>Screen Reader Support</li><li>ARIA Attributes</li></ul></div> },
+    { id: 'tab3', label: 'Testing', content: <div><p>All components include comprehensive tests with axe-core accessibility validation.</p></div> },
+  ]
 
   return (
     <>
@@ -114,6 +121,13 @@ function App() {
             </AccessibleModal>
           </section>
 
+          <section>
+            <h2>Accessible Tabs Example</h2>
+            <p>Use Arrow keys (Left/Right) to navigate tabs, Home/End to jump</p>
+            
+            <AccessibleTabs tabs={tabsData} defaultActiveId="tab1" />
+          </section>
+
           <section className="info">
             <h3>Features Demonstrated:</h3>
             <ul>
@@ -122,6 +136,9 @@ function App() {
               <li>✓ Accessible Modal (focus trap & announcements)</li>
               <li>✓ Theme Toggle (system preference detection)</li>
               <li>✓ WCAG 2.1 AA compliance</li>
+              <li>✓ Keyboard navigation (Tab, Arrows, Enter, Escape, Home, End)</li>
+              <li>✓ ARIA attributes (role, aria-expanded, aria-selected)</li>
+              <li>✓ Focus management</li>
               <li>✓ Screen reader support</li>
             </ul>
           </section>
