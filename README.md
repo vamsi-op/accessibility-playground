@@ -102,6 +102,45 @@ function App() {
 }
 ```
 
+### AccessibleModal
+
+An accessible modal dialog with focus trap and proper ARIA attributes.
+
+**Features:**
+- ✅ Focus trap - keeps focus within the modal
+- ✅ Escape key to close
+- ✅ Click outside backdrop to close
+- ✅ Returns focus to trigger element when closed
+- ✅ Prevents body scroll when open
+- ✅ Proper ARIA attributes (role="dialog", aria-modal)
+- ✅ Screen reader announcements
+
+**Usage:**
+
+```tsx
+import AccessibleModal from './components/AccessibleModal/AccessibleModal'
+import { useState } from 'react'
+
+function App() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <>
+      <button onClick={() => setIsOpen(true)}>Open Modal</button>
+      
+      <AccessibleModal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="Modal Title"
+      >
+        <p>Modal content goes here</p>
+        <button onClick={() => setIsOpen(false)}>Close</button>
+      </AccessibleModal>
+    </>
+  )
+}
+```
+
 ## 🧪 Testing
 
 Run all tests with accessibility checks:
@@ -141,6 +180,11 @@ src/
 │   │   ├── AccessibleDropdown.css
 │   │   ├── AccessibleDropdown.test.tsx
 │   │   └── AccessibleDropdown.stories.tsx
+│   ├── AccessibleModal/
+│   │   ├── AccessibleModal.tsx
+│   │   ├── AccessibleModal.css
+│   │   ├── AccessibleModal.test.tsx
+│   │   └── AccessibleModal.stories.tsx
 │   └── ThemeToggle/
 │       ├── ThemeToggle.tsx
 │       ├── ThemeToggle.css
@@ -170,7 +214,7 @@ Looking for your first contribution? Check out issues labeled `good-first-issue`
 
 Want to add a new component? Here are some ideas:
 
-- [ ] AccessibleModal (dialog with focus trap)
+- [x] AccessibleModal (dialog with focus trap) ✅
 - [ ] AccessibleTabs (keyboard navigation)
 - [ ] AccessibleButton (with loading states)
 - [ ] AccessibleForm (with error handling)
