@@ -2,6 +2,7 @@ import './App.css'
 import { ThemeToggle } from './components/ThemeToggle/ThemeToggle'
 import AccessibleDropdown from './components/AccessibleDropdown/AccessibleDropdown'
 import AccessibleModal from './components/AccessibleModal/AccessibleModal'
+import AccessibleButton from './components/AccessibleButton/AccessibleButton'
 import { useState } from 'react'
 
 function App() {
@@ -37,12 +38,58 @@ function App() {
           </section>
 
           <section>
+            <h2>Accessible Button Examples</h2>
+            <p>Interactive buttons with loading states, variants, and icons</p>
+            
+            <div className="button-demo-grid">
+              <AccessibleButton 
+                variant="primary"
+                onClick={() => console.log('Primary clicked')}
+              >
+                Primary Button
+              </AccessibleButton>
+              
+              <AccessibleButton 
+                variant="secondary"
+                onClick={() => console.log('Secondary clicked')}
+              >
+                Secondary Button
+              </AccessibleButton>
+              
+              <AccessibleButton 
+                variant="danger"
+                size="small"
+                onClick={() => console.log('Danger clicked')}
+              >
+                Delete Item
+              </AccessibleButton>
+              
+              <AccessibleButton 
+                isLoading
+                onClick={() => console.log('Loading clicked')}
+              >
+                Loading...
+              </AccessibleButton>
+              
+              <AccessibleButton 
+                disabled
+                onClick={() => console.log('Disabled clicked')}
+              >
+                Disabled
+              </AccessibleButton>
+            </div>
+          </section>
+
+          <section>
             <h2>Accessible Modal Example</h2>
             <p>Try opening the modal and navigating with Tab and Escape keys</p>
             
-            <button onClick={() => setIsModalOpen(true)}>
+            <AccessibleButton 
+              variant="primary"
+              onClick={() => setIsModalOpen(true)}
+            >
               Open Modal
-            </button>
+            </AccessibleButton>
             
             <AccessibleModal
               isOpen={isModalOpen}
@@ -58,18 +105,23 @@ function App() {
                 <li>✓ Proper ARIA attributes for screen readers</li>
                 <li>✓ Returns focus to the trigger button when closed</li>
               </ul>
-              <button onClick={() => setIsModalOpen(false)}>
+              <AccessibleButton 
+                variant="secondary"
+                onClick={() => setIsModalOpen(false)}
+              >
                 Close Modal
-              </button>
+              </AccessibleButton>
             </AccessibleModal>
           </section>
 
           <section className="info">
             <h3>Features Demonstrated:</h3>
             <ul>
-              <li>✓ Keyboard navigation (Tab, Arrows, Enter, Escape)</li>
-              <li>✓ ARIA attributes (role, aria-expanded, aria-selected)</li>
-              <li>✓ Focus management</li>
+              <li>✓ Accessible Button (variants, loading, disabled states)</li>
+              <li>✓ Accessible Dropdown (keyboard navigation & ARIA)</li>
+              <li>✓ Accessible Modal (focus trap & announcements)</li>
+              <li>✓ Theme Toggle (system preference detection)</li>
+              <li>✓ WCAG 2.1 AA compliance</li>
               <li>✓ Screen reader support</li>
             </ul>
           </section>

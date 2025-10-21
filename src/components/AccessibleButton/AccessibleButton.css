@@ -1,0 +1,292 @@
+/* AccessibleButton Component Styles */
+.accessible-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 2px solid;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+/* Size Variants */
+.accessible-button--small {
+  padding: 0.5rem 0.875rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.accessible-button--medium {
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.accessible-button--large {
+  padding: 1rem 1.75rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+/* Primary Variant */
+.accessible-button--primary {
+  background-color: #646cff;
+  border-color: #646cff;
+  color: white;
+}
+
+.accessible-button--primary:hover:not(:disabled) {
+  background-color: #535bf2;
+  border-color: #535bf2;
+  transform: translateY(-1px);
+}
+
+.accessible-button--primary:active:not(:disabled) {
+  background-color: #4338ca;
+  border-color: #4338ca;
+  transform: translateY(0);
+}
+
+/* Secondary Variant */
+.accessible-button--secondary {
+  background-color: transparent;
+  border-color: #646cff;
+  color: #646cff;
+}
+
+.accessible-button--secondary:hover:not(:disabled) {
+  background-color: #646cff;
+  color: white;
+  transform: translateY(-1px);
+}
+
+.accessible-button--secondary:active:not(:disabled) {
+  background-color: #535bf2;
+  border-color: #535bf2;
+  transform: translateY(0);
+}
+
+/* Danger Variant */
+.accessible-button--danger {
+  background-color: #dc2626;
+  border-color: #dc2626;
+  color: white;
+}
+
+.accessible-button--danger:hover:not(:disabled) {
+  background-color: #b91c1c;
+  border-color: #b91c1c;
+  transform: translateY(-1px);
+}
+
+.accessible-button--danger:active:not(:disabled) {
+  background-color: #991b1b;
+  border-color: #991b1b;
+  transform: translateY(0);
+}
+
+/* Focus States - Enhanced for accessibility */
+.accessible-button:focus-visible {
+  outline: 3px solid;
+  outline-offset: 2px;
+}
+
+.accessible-button--primary:focus-visible {
+  outline-color: #646cff;
+}
+
+.accessible-button--secondary:focus-visible {
+  outline-color: #646cff;
+}
+
+.accessible-button--danger:focus-visible {
+  outline-color: #dc2626;
+}
+
+/* Disabled State */
+.accessible-button:disabled,
+.accessible-button--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+.accessible-button:disabled:hover,
+.accessible-button--disabled:hover {
+  transform: none !important;
+}
+
+/* Loading State */
+.accessible-button--loading {
+  cursor: wait;
+}
+
+.accessible-button--loading .accessible-button__text {
+  opacity: 0.7;
+}
+
+/* Icon Styling */
+.accessible-button__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.accessible-button__icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.accessible-button__icon--left {
+  margin-left: -0.25rem;
+}
+
+.accessible-button__icon--right {
+  margin-right: -0.25rem;
+}
+
+/* Loading Spinner */
+.accessible-button__spinner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: spin 1s linear infinite;
+}
+
+.accessible-button__spinner svg {
+  width: 1em;
+  height: 1em;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Button Text */
+.accessible-button__text {
+  display: flex;
+  align-items: center;
+}
+
+/* Visually Hidden for Screen Readers */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Light Mode Adjustments */
+@media (prefers-color-scheme: light) {
+  .accessible-button--secondary {
+    color: #4338ca;
+    border-color: #4338ca;
+  }
+
+  .accessible-button--secondary:hover:not(:disabled) {
+    background-color: #4338ca;
+    border-color: #4338ca;
+    color: white;
+  }
+
+  .accessible-button--secondary:focus-visible {
+    outline-color: #4338ca;
+  }
+}
+
+/* Dark Mode Enhancements */
+[data-theme='dark'] .accessible-button--secondary {
+  color: #818cf8;
+  border-color: #818cf8;
+}
+
+[data-theme='dark'] .accessible-button--secondary:hover:not(:disabled) {
+  background-color: #818cf8;
+  border-color: #818cf8;
+  color: #1e1b4b;
+}
+
+[data-theme='dark'] .accessible-button--secondary:focus-visible {
+  outline-color: #818cf8;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .accessible-button {
+    border-width: 3px;
+  }
+  
+  .accessible-button:focus-visible {
+    outline-width: 4px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .accessible-button {
+    transition: none;
+  }
+  
+  .accessible-button__spinner {
+    animation: none;
+  }
+  
+  .accessible-button:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+/* Mobile Touch Improvements */
+@media (max-width: 768px) {
+  .accessible-button {
+    min-height: 44px; /* Minimum touch target size */
+    min-width: 44px;
+  }
+  
+  .accessible-button--small {
+    padding: 0.75rem 1rem;
+    min-height: 44px;
+  }
+}
+
+/* Windows High Contrast Mode */
+@media screen and (-ms-high-contrast: active) {
+  .accessible-button {
+    border: 2px solid;
+  }
+  
+  .accessible-button:focus {
+    outline: 3px solid;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .accessible-button {
+    background: white !important;
+    color: black !important;
+    border: 2px solid black !important;
+  }
+}

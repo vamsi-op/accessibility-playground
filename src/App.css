@@ -52,6 +52,13 @@ footer {
   font-size: 0.9em;
 }
 
+.button-demo-grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+
 @media (prefers-color-scheme: light) {
   section {
     background: rgba(0, 0, 0, 0.05);
