@@ -330,6 +330,9 @@ export const Playground: Story = {
 
 // All Variants Showcase
 export const AllVariants: Story = {
+  args: {
+    children: 'Button',
+  },
   render: () => (
     <div className="story-demo-grid">
       <AccessibleButton variant="primary" onClick={fn()}>
@@ -353,6 +356,9 @@ export const AllVariants: Story = {
 
 // All Sizes Showcase
 export const AllSizes: Story = {
+  args: {
+    children: 'Button',
+  },
   render: () => (
     <div className="story-demo-row">
       <AccessibleButton size="small" onClick={fn()}>
@@ -370,6 +376,9 @@ export const AllSizes: Story = {
 
 // Real-world Examples
 export const RealWorldExamples: Story = {
+  args: {
+    children: 'Button',
+  },
   render: () => (
     <div className="story-demo-column">
       <h3>Common Button Patterns</h3>
@@ -423,6 +432,9 @@ export const RealWorldExamples: Story = {
 
 // Keyboard Navigation Demo
 export const KeyboardNavigationDemo: Story = {
+  args: {
+    children: 'Button',
+  },
   render: () => (
     <div className="story-demo-interactive">
       <p className="story-demo-text">
