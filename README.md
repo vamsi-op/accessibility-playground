@@ -235,6 +235,47 @@ function App() {
 }
 ```
 
+### AccessibleTooltip
+
+A fully accessible tooltip component with dynamic positioning.
+
+**Features:**
+- ✅ Show on hover and keyboard focus
+- ✅ Hide on blur and mouse out
+- ✅ Support dynamic content via props
+- ✅ Intelligent positioning (top, bottom, left, right)
+- ✅ ESC key to dismiss
+- ✅ WCAG 2.1 compliant with zero accessibility violations
+
+**Props:**
+- `content`: React.ReactNode - Content to show in the tooltip
+- `children`: React.ReactNode - Element that triggers the tooltip
+- `position`: 'top' | 'bottom' | 'left' | 'right' - Tooltip position (default: 'top')
+- `isVisible`: boolean - Controlled visibility
+- `onVisibilityChange`: (visible: boolean) => void - Visibility change callback
+
+**Usage:**
+
+```tsx
+import { AccessibleTooltip } from './components/AccessibleTooltip/AccessibleTooltip'
+
+function App() {
+  return (
+    <>
+      {/* Basic tooltip */}
+      <AccessibleTooltip content="This is helpful information">
+        <button>Hover me</button>
+      </AccessibleTooltip>
+
+      {/* Tooltip with custom position */}
+      <AccessibleTooltip content="Information below" position="bottom">
+        <button>Hover me</button>
+      </AccessibleTooltip>
+    </>
+  )
+}
+```
+
 ## 🧪 Testing
 
 Run all tests with accessibility checks:
@@ -290,6 +331,11 @@ src/
 │   │   ├── AccessibleTabs.css
 │   │   ├── AccessibleTabs.test.tsx
 │   │   └── AccessibleTabs.stories.tsx
+│   ├── AccessibleTooltip/
+│   │   ├── AccessibleTooltip.tsx
+│   │   ├── AccessibleTooltip.css
+│   │   ├── AccessibleTooltip.test.tsx
+│   │   └── AccessibleTooltip.stories.tsx
 │   └── ThemeToggle/
 │       ├── ThemeToggle.tsx
 │       ├── ThemeToggle.css
@@ -323,7 +369,7 @@ Want to add a new component? Here are some ideas:
 - [x] AccessibleModal (dialog with focus trap) ✅
 - [x] AccessibleTabs (keyboard navigation) ✅
 - [ ] AccessibleForm (with error handling)
-- [ ] AccessibleTooltip (hover & focus)
+- [x] AccessibleTooltip (hover & focus) ✅
 - [ ] AccessibleAccordion (expand/collapse)
 - [ ] AccessibleCarousel (with announcements)
 - [ ] AccessibleTable (sortable & filterable)

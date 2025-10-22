@@ -30,6 +30,7 @@ section {
   background: rgba(255, 255, 255, 0.05);
   border-radius: 12px;
   padding: 2rem;
+  position: relative; /* Add positioning context for tooltips */
 }
 
 section h2 {
@@ -57,6 +58,15 @@ footer {
   gap: 1rem;
   flex-wrap: wrap;
   margin-bottom: 1rem;
+}
+
+.tooltip-demo {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  position: relative; /* Add positioning context for tooltips */
 }
 
 @media (prefers-color-scheme: light) {

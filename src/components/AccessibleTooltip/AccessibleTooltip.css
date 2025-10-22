@@ -1,0 +1,192 @@
+/* AccessibleTooltip Component Styles */
+.accessible-tooltip-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.accessible-tooltip-trigger {
+  display: inline-block;
+  position: relative;
+  outline: none;
+}
+
+.accessible-tooltip {
+  position: absolute;
+  z-index: 1000;
+  padding: 0.5rem 0.75rem;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  max-width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+  pointer-events: none;
+}
+
+.accessible-tooltip--visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.accessible-tooltip__content {
+  position: relative;
+  z-index: 1;
+}
+
+.accessible-tooltip__arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
+/* Positioning: Top */
+.accessible-tooltip--top {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-8px);
+}
+
+.accessible-tooltip--top .accessible-tooltip__arrow {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-top-color: #333;
+}
+
+/* Positioning: Bottom */
+.accessible-tooltip--bottom {
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+}
+
+.accessible-tooltip--bottom .accessible-tooltip__arrow {
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-bottom-color: #333;
+}
+
+/* Positioning: Left */
+.accessible-tooltip--left {
+  top: 50%;
+  right: 100%;
+  transform: translateX(-8px) translateY(-50%);
+}
+
+.accessible-tooltip--left .accessible-tooltip__arrow {
+  top: 50%;
+  left: 100%;
+  transform: translateY(-50%);
+  border-left-color: #333;
+}
+
+/* Positioning: Right */
+.accessible-tooltip--right {
+  top: 50%;
+  left: 100%;
+  transform: translateX(8px) translateY(-50%);
+}
+
+.accessible-tooltip--right .accessible-tooltip__arrow {
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  border-right-color: #333;
+}
+
+/* Focus States - Enhanced for accessibility */
+.accessible-tooltip-trigger:focus-visible {
+  outline: 2px solid #646cff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Light Mode Adjustments */
+@media (prefers-color-scheme: light) {
+  .accessible-tooltip {
+    background-color: #333;
+    color: white;
+  }
+  
+  .accessible-tooltip--top .accessible-tooltip__arrow {
+    border-top-color: #333;
+  }
+  
+  .accessible-tooltip--bottom .accessible-tooltip__arrow {
+    border-bottom-color: #333;
+  }
+  
+  .accessible-tooltip--left .accessible-tooltip__arrow {
+    border-left-color: #333;
+  }
+  
+  .accessible-tooltip--right .accessible-tooltip__arrow {
+    border-right-color: #333;
+  }
+}
+
+/* Dark Mode Enhancements */
+[data-theme='dark'] .accessible-tooltip {
+  background-color: #4b5563;
+  color: #f9fafb;
+}
+
+[data-theme='dark'] .accessible-tooltip--top .accessible-tooltip__arrow {
+  border-top-color: #4b5563;
+}
+
+[data-theme='dark'] .accessible-tooltip--bottom .accessible-tooltip__arrow {
+  border-bottom-color: #4b5563;
+}
+
+[data-theme='dark'] .accessible-tooltip--left .accessible-tooltip__arrow {
+  border-left-color: #4b5563;
+}
+
+[data-theme='dark'] .accessible-tooltip--right .accessible-tooltip__arrow {
+  border-right-color: #4b5563;
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+  .accessible-tooltip {
+    border: 2px solid;
+    background-color: #000;
+    color: #fff;
+  }
+  
+  .accessible-tooltip-trigger:focus-visible {
+    outline-width: 3px;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .accessible-tooltip {
+    transition: none;
+  }
+}
+
+/* Windows High Contrast Mode */
+@media screen and (-ms-high-contrast: active) {
+  .accessible-tooltip {
+    border: 2px solid;
+  }
+  
+  .accessible-tooltip-trigger:focus {
+    outline: 2px solid;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .accessible-tooltip {
+    display: none;
+  }
+}
