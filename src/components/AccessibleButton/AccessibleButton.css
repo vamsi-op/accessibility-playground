@@ -198,22 +198,20 @@
   border: 0;
 }
 
-/* Light Mode Adjustments */
-@media (prefers-color-scheme: light) {
-  .accessible-button--secondary {
-    color: #4338ca;
-    border-color: #4338ca;
-  }
+/* Light theme (default) */
+.accessible-button--secondary {
+  color: #4338ca;
+  border-color: #4338ca;
+}
 
-  .accessible-button--secondary:hover:not(:disabled) {
-    background-color: #4338ca;
-    border-color: #4338ca;
-    color: white;
-  }
+.accessible-button--secondary:hover:not(:disabled) {
+  background-color: #4338ca;
+  border-color: #4338ca;
+  color: white;
+}
 
-  .accessible-button--secondary:focus-visible {
-    outline-color: #4338ca;
-  }
+.accessible-button--secondary:focus-visible {
+  outline-color: #4338ca;
 }
 
 /* Dark Mode Enhancements */
