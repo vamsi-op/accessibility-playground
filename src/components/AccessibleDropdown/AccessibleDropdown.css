@@ -11,10 +11,10 @@
   justify-content: space-between;
   gap: 0.5rem;
   padding: 0.75rem 1rem;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
   border: 2px solid #646cff;
   border-radius: 8px;
-  color: white;
+  color: #213547;
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -22,7 +22,7 @@
 
 .dropdown-button:hover {
   border-color: #535bf2;
-  background-color: #2a2a2a;
+  background-color: #ececec;
 }
 
 .dropdown-button:focus,
@@ -55,13 +55,13 @@
   list-style: none;
   margin: 0;
   padding: 0.5rem 0;
-  background-color: #1a1a1a;
+  background-color: white;
   border: 2px solid #646cff;
   border-radius: 8px;
   max-height: 250px;
   overflow-y: auto;
   z-index: 1000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .dropdown-option {
@@ -71,6 +71,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #213547;
 }
 
 .dropdown-option:hover,
@@ -89,28 +90,30 @@
   margin-left: 0.5rem;
 }
 
-/* Light mode */
-@media (prefers-color-scheme: light) {
-  .dropdown-button {
-    background-color: #f9f9f9;
-    color: #213547;
-    border-color: #646cff;
-  }
+/* Dark theme support */
+[data-theme="dark"] .dropdown-button {
+  background-color: #1a1a1a;
+  color: white;
+  border-color: #646cff;
+}
 
-  .dropdown-button:hover {
-    background-color: #ececec;
-  }
+[data-theme="dark"] .dropdown-button:hover {
+  background-color: #2a2a2a;
+}
 
-  .dropdown-list {
-    background-color: white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  }
+[data-theme="dark"] .dropdown-list {
+  background-color: #1a1a1a;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
 
-  .dropdown-option:hover,
-  .dropdown-option.active {
-    background-color: #646cff;
-    color: white;
-  }
+[data-theme="dark"] .dropdown-option {
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .dropdown-option:hover,
+[data-theme="dark"] .dropdown-option.active {
+  background-color: #646cff;
+  color: white;
 }
 
 /* Scrollbar styling */
