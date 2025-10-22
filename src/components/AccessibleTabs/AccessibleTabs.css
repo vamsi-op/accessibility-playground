@@ -53,3 +53,28 @@
   outline: 2px solid #0066cc;
   outline-offset: 2px;
 }
+
+/* Dark theme overrides */
+[data-theme='dark'] .tab-list {
+  border-bottom-color: #2e2e2e;
+}
+
+[data-theme='dark'] .tab {
+  color: #cbd5e1;
+}
+
+[data-theme='dark'] .tab:hover {
+  color: #ffffff;
+  background-color: #2a2a2a;
+}
+
+[data-theme='dark'] .tab.active {
+  color: #93c5fd; /* light blue accent */
+  border-bottom-color: #93c5fd;
+}
+
+[data-theme='dark'] .tab-panel {
+  background-color: #111827;
+  border-color: #2e2e2e;
+  color: #e5e7eb;
+}
