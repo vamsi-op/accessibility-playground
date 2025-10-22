@@ -1,4 +1,4 @@
-# 🎨 Tiny Accessibility Playground
+# Tiny Accessibility Playground
 
 ![Hacktoberfest](https://img.shields.io/badge/Hacktoberfest-2025-blueviolet)
 ![React](https://img.shields.io/badge/React-18.2-61DAFB)
